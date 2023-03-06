@@ -3,6 +3,9 @@ name: Check Website Status
 on:
   schedule:
     - cron: '0 * * * *'  # Vérifie toutes les heures
+  push:
+    branches:
+      - main
 
 jobs:
   check_status:
