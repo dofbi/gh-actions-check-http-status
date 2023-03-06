@@ -1,0 +1,32 @@
+name: Check Website Status
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Vérifie toutes les heures
+
+jobs:
+  check_status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Check status
+        run: node checkStatus.js
+
+      - name: Create issue
+        if: steps.check_status.outputs.failed_sites
+        uses: peter-evans/create-issue-from-file@v2
+        with:
+          title: Website status check failed
+          content-filepath: ./issue-body.md
+          labels: website, status check

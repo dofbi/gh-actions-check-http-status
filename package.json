@@ -1,0 +1,22 @@
+{
+  "name": "check-http-status",
+  "version": "1.0.0",
+  "description": "Vérification de l'état HTTP des sites Web à l'aide de Node.js et GitHub Actions",
+  "main": "checkStatus.js",
+  "scripts": {
+    "start": "node checkStatus.js"
+  },
+  "keywords": [
+    "http",
+    "status",
+    "check",
+    "node",
+    "github",
+    "actions"
+  ],
+  "author": "Votre nom",
+  "license": "MIT",
+  "dependencies": {
+    "csv-parser": "^3.0.0"
+  }
+}
